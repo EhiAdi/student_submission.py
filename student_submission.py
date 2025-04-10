@@ -1,7 +1,7 @@
 import datetime
 from tabulate import tabulate
 
-def calculate_overall_score(scores, weights=None):
+def calculate_overall_scores(scores, weights=None):
     """
     Calculate the overall score based on component scores and weights.
     
@@ -276,7 +276,7 @@ def advanced(filename, weights=None):
         # Process student data
         processed_students = []
         for student in students:
-            overall_score = calculate_overall_score(student["scores"], weights)
+            overall_score = calculate_overall_scores(student["scores"], weights)
             category = determine_category(overall_score)
             age = calculate_age(student["dob"])
             rounded_result = round_to_category(overall_score)
@@ -302,13 +302,13 @@ def advanced(filename, weights=None):
                 student["name"],
                 student["dob"],
                 student["age"],
-                student["raw_score"],
+                f"{student['raw_score']:.1f}",
                 student["rounded_score"],
                 student["category"]
             ])
         
         headers = ["UID", "Name", "D.o.B", "Age", "Raw Score", "Rounded Score", "Category"]
-        table = tabulate(table_data, headers=headers, tablefmt="simple")
+        table = tabulate(table_data, headers=headers, tablefmt="grid")
         
         # Display table
         print(table)
@@ -379,7 +379,7 @@ def main():
                     print("The input you entered was invalid. Please enter a number between 0 and 100.")
         
         # Calculate overall score and category
-        overall_score = calculate_overall_score(scores)
+        overall_score = calculate_overall_scores(scores)
         category = determine_category(overall_score)
         
         # Calculate age
@@ -413,13 +413,13 @@ def main():
                 student["name"],
                 student["dob"],
                 student["age"],
-                f"{student['raw_score']:.4f}",
+                f"{student['raw_score']:.1f}",
                 student["rounded_score"],
                 student["category"]
             ])
         
         headers = ["UID", "Name", "D.o.B", "Age", "Raw Score", "Rounded Score", "Category"]
-        table = tabulate(table_data, headers=headers, tablefmt="simple")
+        table = tabulate(table_data, headers=headers, tablefmt="grid")
         
         # Display table
         print("\nStudent Results:")
