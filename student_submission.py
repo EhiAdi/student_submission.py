@@ -308,7 +308,7 @@ def advanced(filename, weights=None):
             ])
         
         headers = ["UID", "Name", "D.o.B", "Age", "Raw Score", "Rounded Score", "Category"]
-        table = tabulate(table_data, headers=headers, tablefmt="grid")
+        table = tabulate(table_data, headers=headers, tablefmt="simple")
         
         # Display table
         print(table)
@@ -419,7 +419,7 @@ def main():
             ])
         
         headers = ["UID", "Name", "D.o.B", "Age", "Raw Score", "Rounded Score", "Category"]
-        table = tabulate(table_data, headers=headers, tablefmt="grid")
+        table = tabulate(table_data, headers=headers, tablefmt="simple")
         
         # Display table
         print("\nStudent Results:")
